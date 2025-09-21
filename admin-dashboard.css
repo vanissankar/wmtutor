@@ -216,3 +216,50 @@ main {
   margin-top: 12px;
   font-weight: bold;
 }
+/* ---------------- USER CARDS ---------------- */
+.userCard {
+  background: #e6ffe6;
+  border: 2px solid #00c853;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,200,83,0.15);
+  transition: 0.3s;
+}
+
+.userCard:hover {
+  box-shadow: 0 6px 18px rgba(0,200,83,0.3);
+}
+
+.userCard p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.userCard button {
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #ff4d4f;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.userCard button:hover {
+  opacity: 0.85;
+}
+
+/* ---------------- STAT CARDS ---------------- */
+.statCard {
+  background: #ffffff;
+  border-left: 5px solid #00c853;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 10px rgba(0,200,83,0.1);
+  font-weight: 600;
+  font-size: 15px;
+}

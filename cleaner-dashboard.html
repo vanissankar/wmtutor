@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleaner Dashboard - Smart Waste Management</title>
+  <link rel="stylesheet" href="cleaner-dashboard.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Cleaner Dashboard</h1>
+    <div>
+      <span id="userName">Cleaner</span>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-bar">
+    <button class="nav-btn active" data-section="modulesSection">Tutorials & Quizzes</button>
+    <button class="nav-btn" data-section="tasksSection">Waste Tasks</button>
+    <button class="nav-btn" data-section="pointsSection">Points & Progress</button>
+    <button class="nav-btn" data-section="certificateSection">Certificate</button>
+    <button class="nav-btn" data-section="storeSection">Store</button>
+  </nav>
+
+  <!-- MAIN SECTIONS -->
+  <main>
+    <!-- MODULES / QUIZZES -->
+    <section id="modulesSection" class="section active">
+      <h2>Tutorial Modules</h2>
+      <div id="modulesContainer">Loading modules...</div>
+    </section>
+
+    <!-- WASTE TASKS -->
+    <section id="tasksSection" class="section">
+      <h2>Waste Collection Tasks</h2>
+      <form id="taskForm">
+        <label>Location:</label>
+        <input type="text" id="taskLocation" placeholder="Enter task location" required>
+        <label>Upload Photo:</label>
+        <input type="file" id="taskPhoto" accept="image/*" required>
+        <button type="submit">Submit Task</button>
+      </form>
+      <div id="taskFeedback"></div>
+    </section>
+
+    <!-- POINTS / PROGRESS -->
+    <section id="pointsSection" class="section">
+      <h2>Your Progress</h2>
+      <div id="pointsContainer">Loading points...</div>
+    </section>
+
+    <!-- CERTIFICATE -->
+    <section id="certificateSection" class="section">
+      <h2>Your Certificate</h2>
+      <div id="certificateContainer">
+        <button id="downloadCertBtn" style="display:none;">Download Certificate</button>
+      </div>
+    </section>
+
+    <!-- STORE -->
+    <section id="storeSection" class="section">
+      <h2>Store</h2>
+      <div id="storeItems">Loading store...</div>
+    </section>
+  </main>
+
+  <!-- SCRIPT -->
+  <script type="module" src="cleaner-dashboard.js"></script>
+</body>
+</html>

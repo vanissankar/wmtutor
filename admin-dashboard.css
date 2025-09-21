@@ -1,0 +1,218 @@
+/* ---------------- GENERAL STYLES ---------------- */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #e3f9e5, #ffffff); /* soft green-white gradient */
+  color: #2b2b2b;
+}
+
+/* ---------------- LOGIN SECTION ---------------- */
+#loginSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#loginSection h2 {
+  margin-bottom: 25px;
+  color: #056d06;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#loginSection form {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 40px 45px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 128, 0, 0.2);
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+#loginSection input {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #b6e6b6;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+#loginSection input:focus {
+  outline: none;
+  border-color: #00c853;
+  box-shadow: 0 0 5px #00c853;
+}
+
+#loginSection button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #00c853;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #fff;
+  font-size: 16px;
+}
+
+#loginSection button:hover {
+  background: #056d06;
+}
+
+#loginFeedback {
+  margin-top: 12px;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+/* ---------------- DASHBOARD HEADER ---------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #00c853, #a8e6a3);
+  color: #fff;
+  padding: 18px 35px;
+  box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+header button {
+  padding: 8px 18px;
+  background: #ffffff;
+  color: #00c853;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+header button:hover {
+  background: #e0ffe0;
+}
+
+/* ---------------- NAVIGATION TABS ---------------- */
+.switch-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 12px 20px;
+  background: #f0fff0;
+  border-bottom: 1px solid #d1f2d1;
+}
+
+.switch-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #e6ffe6;
+  transition: 0.3s;
+}
+
+.switch-btn.active, .switch-btn:hover {
+  background: #00c853;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 200, 83, 0.5);
+}
+
+/* ---------------- MAIN SECTIONS ---------------- */
+main {
+  padding: 25px 40px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* ---------------- GLASSMORPHISM CARDS ---------------- */
+.userCard, .statCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 20px 25px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(0, 128, 0, 0.15);
+  transition: 0.3s;
+}
+
+.userCard:hover, .statCard:hover {
+  box-shadow: 0 10px 25px rgba(0, 200, 83, 0.3);
+}
+
+.userCard p, .statCard p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+/* ---------------- BUTTONS IN CARDS ---------------- */
+.userCard button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #ff4d4f;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.userCard button:hover {
+  opacity: 0.85;
+}
+
+/* ---------------- NOTIFICATIONS FORM ---------------- */
+#notifyForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#notifyForm textarea {
+  resize: none;
+  height: 100px;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #b6e6b6;
+  font-size: 15px;
+  box-shadow: inset 0 2px 6px rgba(0, 200, 83, 0.1);
+}
+
+#notifyForm button {
+  width: 160px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #00c853;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+
+#notifyForm button:hover {
+  background: #056d06;
+}
+
+#notifyFeedback {
+  margin-top: 12px;
+  font-weight: bold;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Citizen Dashboard - Smart Waste Management</title>
+  <link rel="stylesheet" href="citizen-dashboard.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Smart Waste Management</div>
+    <div class="user-info">
+      <span id="userName"></span>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-bar">
+    <button class="nav-btn active" data-section="learningSection">Learning</button>
+    <button class="nav-btn" data-section="progressSection">Progress</button>
+    <button class="nav-btn" data-section="complaintSection">Report Waste</button>
+    <button class="nav-btn" data-section="storeSection">Store</button>
+  </nav>
+
+  <!-- MAIN SECTIONS -->
+  <main>
+    <!-- Learning Section -->
+    <section id="learningSection" class="section active">
+      <h2>Learning Modules</h2>
+      <div id="modulesContainer">Loading modules...</div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progressSection" class="section">
+      <h2>Your Progress</h2>
+      <div id="progressContainer">Loading progress...</div>
+    </section>
+
+    <!-- Complaint Section -->
+    <section id="complaintSection" class="section">
+      <h2>Report Waste Issue</h2>
+      <form id="complaintForm">
+        <input type="text" id="location" placeholder="Location" required>
+        <input type="file" id="photo" accept="image/*" required>
+        <textarea id="description" placeholder="Describe the issue" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="complaintFeedback"></div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="storeSection" class="section">
+      <h2>Store</h2>
+      <div id="storeItems">Loading store items...</div>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script type="module" src="citizen-dashboard.js"></script>
+</body>
+</html>

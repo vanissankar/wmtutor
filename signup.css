@@ -1,0 +1,89 @@
+/* ---------------- GENERAL STYLES ---------------- */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0; 
+  padding: 0;
+  background: linear-gradient(135deg, #e3f9e5, #ffffff);
+  color: #2b2b2b;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #00c853, #a8e6a3);
+  color: white;
+  padding: 15px 30px;
+  box-shadow: 0 4px 20px rgba(0, 200, 83, 0.3);
+}
+
+.navbar .logo {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.nav-links a.btn-outline {
+  background: white;
+  color: #056d06;
+  font-weight: 600;
+}
+
+/* SIGNUP FORM CARD */
+.signup-form {
+  max-width: 400px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 35px 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 200, 83, 0.2);
+  text-align: center;
+}
+
+.signup-form h2 {
+  margin-bottom: 25px;
+  color: #056d06;
+}
+
+.signup-form input, 
+.signup-form select, 
+.signup-form button {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.signup-form select {
+  cursor: pointer;
+}
+
+.signup-form button {
+  background: #00c853;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.signup-form button:hover {
+  background: #056d06;
+}
+
+.signup-form p {
+  margin-top: 15px;
+  font-size: 14px;
+}

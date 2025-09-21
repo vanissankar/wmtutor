@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Waste Management Portal</title>
+  <style>
+    /* 🌱 Base Theme */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0fff0; /* slightly green */
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background: #2e8b57;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    /* Intro Section */
+    .intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #e6f5e6; /* soft green */
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(46, 139, 87, 0.15);
+    }
+
+    .intro p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #2e8b57;
+      font-weight: 500;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #196c2f;
+      text-decoration: underline;
+    }
+
+    /* Card Layout */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 128, 0, 0.15);
+      width: 280px;
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 128, 0, 0.25);
+    }
+
+    .card h3 {
+      margin: 15px 0;
+      color: #2e8b57;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .card button {
+      background: #2e8b57;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background: #246b44;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background: #f5fff5;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 900px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    Smart Waste Management Portal
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <p>
+      Welcome to the <span class="highlight">Smart Waste Management Portal</span> 🌍.  
+      This platform helps <span class="highlight">Citizens</span> learn <span class="highlight">waste segregation</span> and report issues,  
+      supports <span class="highlight">Cleaning Workers</span> with safe collection tools,  
+      and empowers <span class="highlight">Admins</span> to monitor the entire ecosystem.  
+      Together, we can build a <span class="highlight">cleaner</span> and <span class="highlight">healthier future</span>. ♻️
+    </p>
+  </section>
+
+  <!-- Card Layout -->
+  <section class="card-container">
+    <div class="card" onclick="goToPage('login.html')">
+      <h3>Citizen</h3>
+      <p>Learn, report waste issues, and earn rewards for eco-friendly actions.</p>
+      <button>Continue as Citizen</button>
+    </div>
+
+    <div class="card" onclick="goToPage('login.html')">
+      <h3>Cleaning Worker</h3>
+      <p>Access your routes, safety training, and report citizen compliance.</p>
+      <button>Continue as Worker</button>
+    </div>
+
+    <div class="card" onclick="goToPage('admin-dashboard.html')">
+      <h3>Admin</h3>
+      <p>Monitor reports, approve requests, and manage the waste ecosystem.</p>
+      <button>Continue as Admin</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Smart Waste Management | Built with 💚 for a cleaner future
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function goToPage(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>

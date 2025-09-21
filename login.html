@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Waste Portal - Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Smart Waste Portal</div>
+    <nav class="nav-links">
+      <a href="signup.html" class="btn">Sign Up</a>
+      <a href="index.html" class="btn btn-outline">Home</a>
+    </nav>
+  </header>
+
+  <!-- Login Form -->
+  <section class="login-form">
+    <h2>Login</h2>
+    <form id="commonLoginForm">
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      
+      <label for="role">Select Role:</label><br>
+      <select id="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="citizen">Citizen</option>
+        <option value="cleaner">Cleaner</option>
+        <option value="admin">Admin</option>
+      </select><br>
+
+      <button type="submit">Login</button>
+      <div id="loginFeedback"></div>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </section>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>

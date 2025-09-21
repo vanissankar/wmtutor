@@ -1,0 +1,144 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0; 
+  padding: 0;
+  background: linear-gradient(to bottom, #e6f5e6, #ffffff);
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #00f260;
+  color: #222;
+  padding: 15px 30px;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #0575e6;
+  color: white;
+  cursor: pointer;
+}
+
+/* NAVIGATION */
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  background: #00f260;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #00f260;
+  transition: 0.3s;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background: #0575e6;
+  color: white;
+}
+
+/* SECTIONS */
+main {
+  padding: 20px 30px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* MODULES */
+.module {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.module iframe {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.question {
+  margin-top: 10px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+}
+
+/* Buttons */
+button {
+  padding: 8px 14px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  background: #00f260;
+}
+
+button:hover {
+  background: #0575e6;
+  color: white;
+}
+
+/* Complaint Form */
+#complaintForm input, #complaintForm textarea {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#complaintFeedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+/* STORE */
+#storeItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.storeItem {
+  background: white;
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}

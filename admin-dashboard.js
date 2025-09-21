@@ -70,32 +70,41 @@ switchBtns.forEach(btn => {
 async function loadUsers() {
   usersList.innerHTML = "<p>Loading users...</p>";
   try {
-    const snapshot = await getDocs(collection(db, "users"));
+    const snapshot = await getDocs(collection(db, "user_roles")); // <-- fixed collection
     usersList.innerHTML = "";
+
+    if (snapshot.empty) {
+      usersList.innerHTML = "<p>No users found.</p>";
+      return;
+    }
+
     snapshot.forEach(docSnap => {
       const user = docSnap.data();
+      const email = user.email || "N/A";
+      const name = user.name || "N/A";
+      const role = user.role || "N/A";
+
       const card = document.createElement("div");
       card.className = "userCard";
       card.innerHTML = `
-        <p><strong>Email:</strong> ${user.email}</p>
-        <p><strong>Role:</strong> ${user.role}</p>
-        <p><strong>Training Completed:</strong> ${user.trainingCompleted ? "Yes ✅" : "No ❌"}</p>
-        <p><strong>Reports Submitted:</strong> ${user.reportsSubmitted || 0}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Role:</strong> ${role}</p>
         <button onclick="deleteUser('${docSnap.id}')">Delete</button>
       `;
       usersList.appendChild(card);
     });
-    if (snapshot.empty) usersList.innerHTML = "<p>No users found.</p>";
   } catch(err) {
     console.error(err);
     usersList.innerHTML = "<p>Error loading users.</p>";
   }
 }
 
+// ---------------- DELETE USER ----------------
 window.deleteUser = async (id) => {
   if(confirm("Are you sure you want to delete this user?")) {
     try {
-      await deleteDoc(doc(db, "users", id));
+      await deleteDoc(doc(db, "user_roles", id)); // <-- fixed collection
       loadUsers();
     } catch(err) {
       console.error(err);
@@ -107,18 +116,22 @@ window.deleteUser = async (id) => {
 async function loadStats() {
   statsCards.innerHTML = "<p>Loading stats...</p>";
   try {
-    const usersSnap = await getDocs(collection(db, "users"));
-    const reportsSnap = await getDocs(collection(db, "reports"));
+    const usersSnap = await getDocs(collection(db, "user_roles")); // <-- fixed collection
 
-    const citizens = usersSnap.docs.filter(u => u.data().role === "Citizen");
-    const workers = usersSnap.docs.filter(u => u.data().role === "Worker");
-    const trainedUsers = usersSnap.docs.filter(u => u.data().trainingCompleted);
+    let citizens = 0, cleaners = 0, totalUsers = 0;
+
+    usersSnap.forEach(docSnap => {
+      const user = docSnap.data();
+      totalUsers++;
+      const role = (user.role || "").toLowerCase();
+      if(role === "citizen") citizens++;
+      if(role === "cleaner") cleaners++;
+    });
 
     statsCards.innerHTML = `
-      <p><strong>Total Citizens:</strong> ${citizens.length}</p>
-      <p><strong>Total Cleaning Workers:</strong> ${workers.length}</p>
-      <p><strong>Users Trained:</strong> ${trainedUsers.length}</p>
-      <p><strong>Total Waste Reports Submitted:</strong> ${reportsSnap.size}</p>
+      <div class="statCard"><p><strong>Total Users:</strong> ${totalUsers}</p></div>
+      <div class="statCard"><p><strong>Total Citizens:</strong> ${citizens}</p></div>
+      <div class="statCard"><p><strong>Total Cleaners:</strong> ${cleaners}</p></div>
     `;
   } catch(err) {
     console.error(err);
@@ -131,7 +144,7 @@ searchInput.addEventListener("input", async () => {
   const term = searchInput.value.trim().toLowerCase();
   searchResults.innerHTML = "<p>Searching...</p>";
   try {
-    const usersSnap = await getDocs(collection(db, "users"));
+    const usersSnap = await getDocs(collection(db, "user_roles")); // <-- fixed collection
     const results = [];
     usersSnap.forEach(docSnap => {
       const user = docSnap.data();
@@ -151,7 +164,6 @@ notifyForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const message = document.getElementById("notifyMsg").value.trim();
   if(message === "") return;
-  // Here you can integrate EmailJS or Firestore notification collection
   alert("Notification sent to all users:\n\n" + message);
   notifyForm.reset();
 });

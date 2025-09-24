@@ -1,3 +1,4 @@
+/* GENERAL */
 body {
   font-family: 'Inter', sans-serif;
   margin: 0; 
@@ -95,7 +96,7 @@ main {
   margin: 5px 0;
 }
 
-/* Buttons */
+/* BUTTONS */
 button {
   padding: 8px 14px;
   border-radius: 5px;
@@ -111,7 +112,7 @@ button:hover {
   color: white;
 }
 
-/* Complaint Form */
+/* COMPLAINT FORM */
 #complaintForm input, #complaintForm textarea {
   width: 90%;
   margin: 10px 0;
@@ -141,4 +142,29 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
+}
+
+/* FLOATING INSTRUCTION BUTTON */
+#instructionBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #00f260;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#instructionBtn:hover {
+  background: #0575e6;
 }

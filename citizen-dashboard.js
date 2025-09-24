@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Sections & nav
+// Sections & navigation
 const navBtns = document.querySelectorAll(".nav-btn");
 const sections = document.querySelectorAll(".section");
 navBtns.forEach(btn => {
@@ -29,61 +29,41 @@ navBtns.forEach(btn => {
   });
 });
 
-// User info
+// DOM elements
 const userNameEl = document.getElementById("userName");
 const logoutBtn = document.getElementById("logoutBtn");
-
-logoutBtn.addEventListener("click", () => {
-  sessionStorage.clear(); // clear uid & role
-  location.href = "login.html";
-});
-
-// Learning Modules Data
-const modulesData = [
-  {
-    videoUrl: "https://www.youtube.com/embed/video1",
-    questions: [
-      { q:"What type of waste goes in dry bin?", options:["Plastic","Kitchen Waste","Batteries"], answer:0 },
-      { q:"Should wet waste be segregated?", options:["Yes","No"], answer:0 }
-    ]
-  },
-  {
-    videoUrl: "https://www.youtube.com/embed/video2",
-    questions: [
-      { q:"Composting reduces landfill load?", options:["Yes","No"], answer:0 },
-      { q:"Can plastic be composted?", options:["Yes","No"], answer:1 }
-    ]
-  },
-  {
-    videoUrl: "https://www.youtube.com/embed/video3",
-    questions: [
-      { q:"Recycling helps environment?", options:["Yes","No"], answer:0 },
-      { q:"All waste is biodegradable?", options:["Yes","No"], answer:1 }
-    ]
-  }
-];
-
 const modulesContainer = document.getElementById("modulesContainer");
 const progressContainer = document.getElementById("progressContainer");
 const complaintForm = document.getElementById("complaintForm");
 const complaintFeedback = document.getElementById("complaintFeedback");
 const storeItemsEl = document.getElementById("storeItems");
 
-// Certificate
+// Floating Tamil instruction button
+const instructionBtn = document.createElement("button");
+instructionBtn.id = "instructionBtn";
+instructionBtn.title = "Listen Instructions";
+instructionBtn.innerText = "🔊";
+document.body.appendChild(instructionBtn);
+
+// Replace with your MP3 file URL
+const tamilAudio = new Audio("voice 1.mp3"); 
+instructionBtn.addEventListener("click", () => {
+  tamilAudio.play();
+});
+
+// Certificate button
 const certificateBtn = document.createElement("button");
 certificateBtn.innerText = "Download Certificate";
 certificateBtn.style.display = "none";
 certificateBtn.addEventListener("click", generateCertificate);
 document.body.appendChild(certificateBtn);
 
-// ------------------------
-// USE SESSIONSTORAGE TO GET USER
-// ------------------------
+// SessionStorage user check
 const uid = sessionStorage.getItem("uid");
 const role = sessionStorage.getItem("role");
 
 if (!uid || role !== "citizen") {
-  location.href = "login.html"; // not logged in or wrong role
+  location.href = "login.html"; // Not logged in or wrong role
 } else {
   userNameEl.innerText = role.charAt(0).toUpperCase() + role.slice(1);
   loadLearningModules(uid);
@@ -91,7 +71,32 @@ if (!uid || role !== "citizen") {
   loadStore();
 }
 
-// --- Learning Modules ---
+// --- Learning Modules Data ---
+const modulesData = [
+  {
+    videoUrl: "https://www.youtube.com/embed/e30Izcn49OA?si=NejURbQvAYCRU3Me",
+    questions: [
+      { q:"உலர்ந்த கழிவுப் பெட்டியிலே எந்த வகை கழிவு சேர்க்க வேண்டும்?", options:["பிளாஸ்டிக்","சமையலறை கழிவு","பேட்டரி"], answer:0 },
+      { q:"எதிர்வினை கழிவுகளை பிரிக்க வேண்டுமா?", options:["ஆம்","இல்லை"], answer:0 }
+    ]
+  },
+  {
+    videoUrl: "https://www.youtube.com/embed/RAptxP5TM28?si=AiwgOimOGQyOx6f1",
+    questions: [
+      { q:"கம்போஸ்டிங் செய்வதால் மண் மேடு (லேண்ட்ஃபில்) சுமை குறையுமா?", options:["ஆம்","இல்லை"], answer:0 },
+      { q:"பிளாஸ்டிக் கலப்பு உரம் ஆகுமா?", options:["ஆம்","இல்லை"], answer:1 }
+    ]
+  },
+  {
+    videoUrl: "https://www.youtube.com/embed/qUHLXO7M4bU?si=ccYa2OsqmIzUB_4F",
+    questions: [
+      { q:"மறுசுழற்சி சுற்றுசீரான்மைக்கு உதவுமா?", options:["ஆம்","இல்லை"], answer:0 },
+      { q:"எல்லா கழிவுகளும் உயிரியாற்சிதைவுறத்தக்கது?", options:["ஆம்","இல்லை"], answer:1 }
+    ]
+  }
+];
+
+// --- Load Learning Modules ---
 async function loadLearningModules(uid) {
   modulesContainer.innerHTML = "";
   let userProgress = { completedModules: 0 };
@@ -105,8 +110,9 @@ async function loadLearningModules(uid) {
     if (index > userProgress.completedModules) return; // lock modules
     const moduleDiv = document.createElement("div");
     moduleDiv.className = "module";
-    moduleDiv.innerHTML = `<h3>Module ${index + 1}</h3>
-      <iframe src="${module.videoUrl}" frameborder="0" allowfullscreen></iframe>
+    moduleDiv.innerHTML = `
+      <h3>Module ${index + 1}</h3>
+      <iframe width="560" height="315" src="${module.videoUrl}" frameborder="0" allowfullscreen></iframe>
       <div class="quiz"></div>`;
     modulesContainer.appendChild(moduleDiv);
 
@@ -144,13 +150,15 @@ async function loadLearningModules(uid) {
         loadLearningModules(uid);
         loadProgress(uid);
         checkCertificate(uid);
-      } else { alert(`You scored ${percent}%. Need at least 80% to complete.`); }
+      } else {
+        alert(`You scored ${percent}%. Need at least 80% to complete.`);
+      }
     });
     quizDiv.appendChild(submitBtn);
   });
 }
 
-// --- Progress ---
+// --- Load Progress ---
 async function loadProgress(uid) {
   try {
     const docRef = doc(db, "citizen_progress", uid);
@@ -161,7 +169,7 @@ async function loadProgress(uid) {
   } catch (err) { console.error(err); }
 }
 
-// --- Store ---
+// --- Load Store ---
 async function loadStore() {
   storeItemsEl.innerHTML = "";
   const items = [
@@ -177,7 +185,7 @@ async function loadStore() {
   });
 }
 
-// --- Certificate Logic ---
+// --- Certificate ---
 async function checkCertificate(uid){
   const docRef = doc(db, "citizen_progress", uid);
   const docSnap = await getDoc(docRef);
@@ -226,5 +234,14 @@ complaintForm.addEventListener("submit", async e => {
 
     complaintFeedback.innerText = "Complaint submitted successfully!";
     complaintForm.reset();
-  } catch (err) { console.error(err); complaintFeedback.innerText = "Error submitting complaint"; }
+  } catch (err) {
+    console.error(err);
+    complaintFeedback.innerText = "Error submitting complaint";
+  }
+});
+
+// --- Logout ---
+logoutBtn.addEventListener("click", () => {
+  sessionStorage.clear();
+  location.href = "login.html";
 });

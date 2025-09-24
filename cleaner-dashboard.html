@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cleaner Dashboard - Smart Waste Management</title>
   <link rel="stylesheet" href="cleaner-dashboard.css">
+  <style>
+    /* --- Floating Instruction Button --- */
+    #instructionBtn {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      animation: floatBtn 2s infinite;
+      z-index: 1000;
+    }
+
+    @keyframes floatBtn {
+      0% { transform: translateY(-50%) translateY(0px); }
+      50% { transform: translateY(-50%) translateY(-10px); }
+      100% { transform: translateY(-50%) translateY(0px); }
+    }
+  </style>
 </head>
 <body>
 
@@ -67,6 +93,12 @@
       <div id="storeItems">Loading store...</div>
     </section>
   </main>
+
+  <!-- FLOATING SPEAKER BUTTON -->
+  <button id="instructionBtn" title="Instructions">🔊</button>
+
+  <!-- AUDIO -->
+  <audio id="instructionAudio" src="assets/instruction.mp3" preload="auto"></audio>
 
   <!-- SCRIPT -->
   <script type="module" src="cleaner-dashboard.js"></script>
